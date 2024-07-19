@@ -22,8 +22,12 @@
   </div>
 </nav>
 @if (successMessage) {
-<ngb-alert #selfClosingAlert type="success" (closed)="successMessage = ''">{{
+<ngb-alert #deleteAlert type="success" (closed)="successMessage = ''">{{
   successMessage
+}}</ngb-alert>
+} @if (userCreated) {
+<ngb-alert #createAlert type="success" (closed)="userCreated = ''">{{
+  userCreated
 }}</ngb-alert>
 }
 <div class="container mt-5">

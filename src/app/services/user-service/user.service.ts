@@ -18,6 +18,9 @@ export class UserService {
     return this.http.get<{ data: User; }>(`${this.BASE_URL}/${id}`);
   }
 
+  public createUser(user: any) {
+    return this.http.get<{ data: User; }>(`${this.BASE_URL}`, user);
+  }
 
 
   public deleteUser(id: number) {

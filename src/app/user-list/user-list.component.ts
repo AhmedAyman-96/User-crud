@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-service/user.service';
 import { User } from '../models/user.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgbAlert, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteModalComponent } from '../shared/delete-modal/delete-modal.component';
 
@@ -15,10 +15,20 @@ export class UserListComponent implements OnInit {
   public currentPage = 1;
   public totalPages = 0;
   public successMessage = '';
-  @ViewChild('selfClosingAlert', { static: false })
-  selfClosingAlert!: NgbAlert;
+  public userCreated = '';
+  @ViewChild('deleteAlert', { static: false })
+  deleteAlert!: NgbAlert;
+  @ViewChild('createAlert', { static: false })
+  createAlert!: NgbAlert;
 
-  constructor(private userService: UserService, private router: Router, private modalService: NgbModal) {
+  constructor(private userService: UserService, private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(query => {
+      if (query["created"] === "true") {
+        this.userCreated = 'User Created!';
+        setTimeout(() => this.createAlert.close(), 5000);
+      }
+    })
+
   }
 
   ngOnInit(): void {
@@ -46,7 +56,7 @@ export class UserListComponent implements OnInit {
       if (result) {
         this.userService.deleteUser(id).subscribe(resp => {
           this.successMessage = 'User Deleted!';
-          setTimeout(() => this.selfClosingAlert.close(), 5000);
+          setTimeout(() => this.deleteAlert.close(), 5000);
         }, err => console.log(err))
       }
 
