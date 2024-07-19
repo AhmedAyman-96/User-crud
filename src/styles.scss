@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --card-background-color: #ffffff;
+  --card-border-color: #e9ecef;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-brand,
+.nav-link {
+  color: white !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

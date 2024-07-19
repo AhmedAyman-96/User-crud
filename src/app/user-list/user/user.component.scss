@@ -1,0 +1,25 @@
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background-color: var(--card-background-color);
+  border: 1px solid var(--card-border-color);
+  margin-top: 2rem;
+}
+
+.card-title {
+  color: var(--primary-color);
+}
+
+.card-text {
+  color: var(--secondary-color);
+}
+
+h1 {
+  color: var(--primary-color);
+}
