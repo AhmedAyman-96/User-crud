@@ -7,6 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './delete-modal.component.scss'
 })
 export class DeleteModalComponent {
+  public userName: string = '';
   modal = inject(NgbActiveModal);
 
 }

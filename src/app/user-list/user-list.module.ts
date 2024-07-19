@@ -6,14 +6,16 @@ import { UserListComponent } from './user-list.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from './user/user.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     UserListComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
+    NgbAlert,
     CommonModule,
     SharedModule,
     FontAwesomeModule,

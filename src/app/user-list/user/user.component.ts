@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   private getUser(id: number) {
     this.userService.getUser(id).subscribe(response => {
       this.user = response.data as User;
-    })
+    }, err => console.log(err))
   }
 
 }

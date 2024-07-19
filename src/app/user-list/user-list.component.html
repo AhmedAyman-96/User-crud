@@ -21,7 +21,11 @@
     </div>
   </div>
 </nav>
-
+@if (successMessage) {
+<ngb-alert #selfClosingAlert type="success" (closed)="successMessage = ''">{{
+  successMessage
+}}</ngb-alert>
+}
 <div class="container mt-5">
   <h1 class="mb-4">User List</h1>
   <div class="row">
@@ -48,7 +52,13 @@
               <i class="fa fa-pencil-alt"></i>
             </button>
             <button
-              (click)="deleteUser(user.id); $event.stopPropagation()"
+              (click)="
+                deleteUser(
+                  '' + user.first_name + ' ' + user.last_name,
+                  user.id
+                );
+                $event.stopPropagation()
+              "
               class="btn btn-delete btn-sm"
             >
               <i class="fa fa-trash"></i>
