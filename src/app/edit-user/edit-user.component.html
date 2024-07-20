@@ -1,1 +1,46 @@
-<p>edit-user works!</p>
+<div class="container mt-5">
+  <h1 class="mb-4">Create User</h1>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': submitted && userForm.controls.name.errors
+        }"
+      />
+      <div
+        *ngIf="submitted && userForm.controls.name.errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="userForm.controls.name.errors.required">
+          Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="job" class="form-label">Job</label>
+      <input
+        type="text"
+        id="job"
+        formControlName="job"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': submitted && userForm.controls.job.errors
+        }"
+      />
+      <div
+        *ngIf="submitted && userForm.controls.job.errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="userForm.controls.job.errors.required">Job is required</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit User</button>
+  </form>
+</div>

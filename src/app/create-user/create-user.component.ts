@@ -30,7 +30,7 @@ export class CreateUserComponent {
     }
 
     this.userService.createUser(this.userForm.value).subscribe(resp => {
-      this.router.navigateByUrl('user?created=true')
+      this.router.navigateByUrl('user?created=create')
     }, err => console.log(err));
   }
 }

@@ -37,9 +37,7 @@
         *ngIf="submitted && userForm.controls.job.errors"
         class="invalid-feedback"
       >
-        <div *ngIf="userForm.controls.job.errors.required">
-          Last Name is required
-        </div>
+        <div *ngIf="userForm.controls.job.errors.required">Job is required</div>
       </div>
     </div>
 

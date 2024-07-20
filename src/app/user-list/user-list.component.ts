@@ -23,8 +23,11 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(query => {
-      if (query["created"] === "true") {
+      if (query["created"] === "create") {
         this.userCreated = 'User Created!';
+        setTimeout(() => this.createAlert.close(), 5000);
+      } else if (query["created"] === "edit") {
+        this.userCreated = 'User Edited!';
         setTimeout(() => this.createAlert.close(), 5000);
       }
     })
@@ -61,6 +64,10 @@ export class UserListComponent implements OnInit {
       }
 
     })
+  }
+
+  public editUser(id: number) {
+    this.router.navigateByUrl('edit-user/' + id)
   }
 
   public navigateToUser(id: number) {

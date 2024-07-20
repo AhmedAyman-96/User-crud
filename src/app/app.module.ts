@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbAlert, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { LoginComponent } from './user-loign/login/login.component';
 
 @NgModule({
   declarations: [

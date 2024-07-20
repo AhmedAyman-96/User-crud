@@ -50,7 +50,7 @@
           </div>
           <div>
             <button
-              (click)="$event.stopPropagation()"
+              (click)="editUser(user.id); $event.stopPropagation()"
               class="btn btn-edit btn-sm me-2"
             >
               <i class="fa fa-pencil-alt"></i>
