@@ -10,6 +10,7 @@ export class UserService {
   private readonly BASE_URL: string = 'https://reqres.in/api/users';
   constructor(private http: HttpClient) { }
 
+
   public getUsers(pageNumber: number) {
     return this.http.get<UserListModel>(`${this.BASE_URL}?page=${pageNumber}`);
   }

@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbAlert, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { LoginComponent } from './user-loign/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { SharedModule } from './shared/shared.module';
+import { LocalStorageService } from './services/localStorage/local-storage.service';
+import { AuthService } from './services/auth/auth-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    SharedModule,
     FontAwesomeModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

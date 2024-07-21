@@ -1,1 +1,57 @@
-<p>user-login works!</p>
+@if (errorMessage) {
+<ngb-alert #loginAlert type="danger" (closed)="errorMessage = ''">{{
+  errorMessage
+}}</ngb-alert>
+}
+
+<div class="container mt-5">
+  <h1 class="mb-4">Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': submitted && loginForm.controls.email.errors
+        }"
+      />
+      <div
+        *ngIf="submitted && loginForm.controls.email.errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="loginForm.controls.email.errors.required">
+          Email is required
+        </div>
+        <div *ngIf="loginForm.controls.email.errors.email">
+          Email must be a valid email address
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': submitted && loginForm.controls.password.errors
+        }"
+      />
+      <div
+        *ngIf="submitted && loginForm.controls.password.errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="loginForm.controls.password.errors.required">
+          Password is required
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>

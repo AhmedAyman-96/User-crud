@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../services/localStorage/local-storage.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-service/user.service';
 import { User } from '../models/user.model';
@@ -21,7 +22,7 @@ export class UserListComponent implements OnInit {
   @ViewChild('createAlert', { static: false })
   createAlert!: NgbAlert;
 
-  constructor(private userService: UserService, private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
+  constructor(private localStorageService: LocalStorageService, private userService: UserService, private router: Router, private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(query => {
       if (query["created"] === "create") {
         this.userCreated = 'User Created!';
@@ -43,6 +44,7 @@ export class UserListComponent implements OnInit {
       this.users = [...this.users, ...response.data];
       this.currentPage = response.page;
       this.totalPages = response.total_pages;
+      console.log(this.currentPage, this.totalPages)
     }, err => console.log(err));
 
   }
@@ -72,6 +74,11 @@ export class UserListComponent implements OnInit {
 
   public navigateToUser(id: number) {
     this.router.navigateByUrl('user/' + id)
+  }
+
+  public goToCreateUser() {
+    this.router.navigateByUrl('create-user')
+
   }
 
 
